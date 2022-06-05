@@ -7,13 +7,14 @@
  - I want to be able to click the images to see larger sizes. 
 
 # Technologies Used
-    - HTML
-    - CSS
-    - Javascript
-    - NASA API
+
+- HTML
+- CSS
+ - Javascript
+ - NASA API
 
 # Screenshots
-    ![wireframe screenshot](assets/screenshots/wireframe.png)
+![wireframe screenshot](assets/screenshots/wireframe.png)
 # Getting Started
 
 # Future Enhancements
