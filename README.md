@@ -3,8 +3,8 @@
  - Application to search the archive of the Astro Pics of the Day between a specified date range. 
 
 # User Stories
- - As a user I want to be able to select a start date and end date, then be provided astro pictures and their descriptions. 
- - I want to be able to click the images to see larger sizes. 
+- As a user I want to be able to choose a month and a year and see all of the astro photos that were posted.
+
 
 # Technologies Used
 
