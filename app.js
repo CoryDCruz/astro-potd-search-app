@@ -41,9 +41,13 @@ function render(res){
         let divCardBody = document.createElement("div")
         let divCard = document.createElement("div")
         let img = document.createElement("img")
+        let h5 = document.createElement("h5")
+        let p = document.createElement("p")
         
-
-
+        p.classList.add("card-text")
+        p.innerText = res.title
+        h5.classList.add("card-title")
+        h5.innerText = res.date
         img.classList.add("card-img-top")
         img.setAttribute("src",res.url)
         img.setAttribute("alt",res.title)
@@ -51,7 +55,10 @@ function render(res){
         divCard.classList.add("card", "shadow-sm")
         divCardBody.classList.add("card-body")
 
+        divCardBody.appendChild(h5)
+        divCardBody.appendChild(p)
         divCard.appendChild(img)
+        divCard.appendChild(divCardBody)
         divCol.appendChild(divCard)
         row.appendChild(divCol)
 
