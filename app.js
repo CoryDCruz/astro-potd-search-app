@@ -34,6 +34,8 @@ function getCurrentDate(){
 
 
 function render(res){
+    document.querySelectorAll(".col").forEach(col => col.remove())
+
     res.forEach(res => {
         
         let row = document.querySelector(".row")

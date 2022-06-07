@@ -12,24 +12,25 @@
 </head>
 <body>
     <header>
-        <h1>Astro P.O.T.D Search Engine</h1>
+
     </header>
 
     <main>
+        <section class="py-5 text-center container">
+            <div class="col-lg-6 col-md-8 mx-auto">
+                <h1 class="fw-dark">Astronomy Picture of The Day Archive</h1>
+                <p class="lead text-muted">Select a month and year to see all of the Astronomy Pictures of The Day posted for that Month!</p>
+                <input type="month" class="form-control" value="" name="start" id="start" min="1965-06" max="">
 
-        <input type="month" class="form-control" value="" name="start" id="start" min="1965-06" max="">
+            </div>
+            
+
+        </section>
+        
+        
         <div class="album py-5 bg-light">
             <div class="container">
                 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-                    <div class="col">
-                        <div class="card shadow-sm">
-                            <img class="card-img-top" src="https://apod.nasa.gov/apod/image/2206/TauHerMeteors_Lyu_1080.jpg" alt="card image">
-                            <div class="card-body">
-                                <h5 class="card-title">2022-06-01</h5>
-                                <p class="card-text">Tau Herculids Meteors over Kitt Peak Telescopes</p>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
