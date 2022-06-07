@@ -1,10 +1,6 @@
 let startDate, endDate
 
 
-
-
-
-
 //DOM selectors
 let start = document.getElementById("start")
 let dataDisplay = document.getElementById("data-display")
@@ -37,7 +33,7 @@ function render(res){
     document.querySelectorAll(".col").forEach(col => col.remove())
 
     res.forEach(res => {
-        
+
         let row = document.querySelector(".row")
         let divCol = document.createElement("div")
         let divCardBody = document.createElement("div")
@@ -72,13 +68,14 @@ function render(res){
 function getData(e){
     startDate = e.target.value
     startDate === start.max ? endDate = "" : endDate = getEndDate(e.target.value)
-    const url = `https://api.nasa.gov/planetary/apod?api_key=qqlQgdDqd0kHkZqkplnC0c3rylrZKAgYhsyXkH04&start_date=${startDate}-01&end_date=${endDate}`
+    const url = `https://api.nasa.gov/planetary/apod?api_key=Q5S3dbJQaQBWgPObnvktAYvLVi4U0saG1yelfuNG&start_date=${startDate}-01&end_date=${endDate}`
     console.log(url)
     fetch(url)
      .then(res => {
         return res.json()
         })
         .then (res => {
+            console.log(url)
             render(res)
         })
         .catch (err => {
