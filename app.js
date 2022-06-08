@@ -10,7 +10,7 @@ let container = document.getElementById('container')
 start.value = ""
 start.max = getCurrentDate()
 
-// function to add one month to the start date
+// function to add the end date of the search query
 function getEndDate (start) {
     let startDateArr = start.split("-")
     let startMonth = parseInt(startDateArr[1])
@@ -43,7 +43,13 @@ function render(res){
         let p = document.createElement("p")
         
         p.classList.add("card-text")
-        p.innerText = res.title
+        if(res.copyright != null){
+            p.innerText = `${res.title}. Copyright: ${res.copyright}`
+        }
+        else{
+            p.innerText = `${res.title}`
+        }
+        
         h5.classList.add("card-title")
         h5.innerText = res.date
         img.classList.add("card-img-top")
@@ -65,6 +71,24 @@ function render(res){
     })
 }
 
+function filterResults (res){
+
+    let filteredRes = res.filter(res => {
+        let date = res.date.split("-")
+        let startDateArr = startDate.split("-")
+        if(date[1] != startDateArr[1]){
+            return
+        }
+        else{
+            return res
+        }
+
+    })
+
+    return filteredRes
+
+}
+
 function getData(e){
     startDate = e.target.value
     startDate === start.max ? endDate = "" : endDate = getEndDate(e.target.value)
@@ -75,8 +99,8 @@ function getData(e){
         return res.json()
         })
         .then (res => {
-            console.log(url)
-            render(res)
+            let finalRes = filterResults(res)
+            render(finalRes)
         })
         .catch (err => {
             console.log(err)
