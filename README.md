@@ -18,6 +18,7 @@
 # Getting Started
 
 # Future Enhancements
- - Some images are actually youtube videos, future enhancement will be able to load the embedded youtube videos for users to play. 
- - Create a side drawer where users can select specific categories and be displayed the most recent Astro 
+ - Some images are actually youtube videos, future iterations should be able to load the embedded youtube videos for users to play. 
  - Loading spinner when a selection is made. Display loading spinner until images are displayed. 
+ - Create a side drawer where users can select specific categories and be displayed the most recent Astro 
+ 
