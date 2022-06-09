@@ -1,4 +1,8 @@
+
+require("dotenv").config()
 let startDate, endDate
+let apiKey = process.env.API_KEY
+
 
 
 //DOM selectors
@@ -118,7 +122,7 @@ function filterResults (res){
 function getData(e){
     startDate = e.target.value
     startDate === start.max ? endDate = "" : endDate = getEndDate(e.target.value)
-    const url = `https://api.nasa.gov/planetary/apod?api_key=Q5S3dbJQaQBWgPObnvktAYvLVi4U0saG1yelfuNG&start_date=${startDate}-01&end_date=${endDate}`
+    const url = `https://api.nasa.gov/planetary/apod?api_key=${apiKey}&start_date=${startDate}-01&end_date=${endDate}`
     fetch(url)
      .then(res => {
         return res.json()
