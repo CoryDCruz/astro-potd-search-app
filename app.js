@@ -1,7 +1,7 @@
 
-require("dotenv").config()
+
 let startDate, endDate
-let apiKey = process.env.API_KEY
+let apiKey = "Q5S3dbJQaQBWgPObnvktAYvLVi4U0saG1yelfuNG"
 
 
 
