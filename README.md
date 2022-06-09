@@ -9,9 +9,9 @@
 
 - HTML
 - CSS
- - Javascript
- - NASA API
- - Boostrap
+- Javascript
+- NASA API
+- Boostrap
 
 # Screenshots
 ![wireframe screenshot](assets/screenshots/wireframe.png)

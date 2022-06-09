@@ -47,9 +47,11 @@ function render(res){
         let divCol = document.createElement("div")
         let divCardBody = document.createElement("div")
         let divCard = document.createElement("div")
+        let divEmbed = document.createElement("div")
         let img = document.createElement("img")
         let h5 = document.createElement("h5")
         let p = document.createElement("p")
+        // let iFrame = document.createElement("iframe")
         
         p.classList.add("card-text")
         if(res.copyright != null){
@@ -58,14 +60,26 @@ function render(res){
         else{
             p.innerText = `${res.title}`
         }
-        
-        h5.classList.add("card-title")
-        h5.innerText = displayDate(res.date)
+
+        if(res.url.includes("youtube") === true || res.url.includes("vimeo") === true) {
+            img = document.createElement("iframe")
+            img.classList.add("card-img-top", "embed-responsive-item")
+            img.setAttribute("src",res.url)
+        }
+        else {
         img.classList.add("card-img-top")
         img.setAttribute("src",res.url)
         img.setAttribute("alt",res.title)
+        }
+
+        
+        h5.classList.add("card-title")
+        h5.innerText = displayDate(res.date)
+       
+
         divCol.classList.add("col")
         divCard.classList.add("card", "shadow","shadow-lg", "shadow-intesity-sm", "rounded")
+        divEmbed.classList.add("embed-responsive", "embed-responsive-16by9")
         divCardBody.classList.add("card-body")
 
         divCardBody.appendChild(h5)
