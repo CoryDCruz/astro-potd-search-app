@@ -65,6 +65,9 @@ function render(res){
             img = document.createElement("iframe")
             img.classList.add("card-img-top", "embed-responsive-item")
             img.setAttribute("src",res.url)
+            img.setAttribute("width", "560")
+            img.setAttribute("height", "315")
+            img.setAttribute("allowfullscreen","")
         }
         else {
         img.classList.add("card-img-top")
