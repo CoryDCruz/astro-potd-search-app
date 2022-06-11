@@ -99,7 +99,7 @@ function render(res){
        
 
         divCol.classList.add("col")
-        divCard.classList.add("card", "shadow","shadow-lg", "shadow-intesity-sm", "rounded")
+        divCard.classList.add("card", "rounded")
         divEmbed.classList.add("embed-responsive", "embed-responsive-16by9")
         divCardBody.classList.add("card-body")
 

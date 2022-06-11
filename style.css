@@ -12,5 +12,8 @@
     min-height: 50px;
 }
 
+.card {
+    box-shadow: 0 1rem 1rem rgb(170, 171, 197)!important;
+}
 
 
