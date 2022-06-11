@@ -5,3 +5,12 @@
 }
 
 
+ header {
+    background-image: url('bg1.jpeg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 50px;
+}
+
+
+
