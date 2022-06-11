@@ -24,5 +24,5 @@
 # Future Enhancements
  - hide API key
  - add a more styled way to look through the photos 
- - Allow users to see a full size version of the photo. 
+ 
  
