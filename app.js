@@ -2,17 +2,13 @@ const apiKey = "Q5S3dbJQaQBWgPObnvktAYvLVi4U0saG1yelfuNG"
 
 
 
-    let startDate, endDate
-    let start = document.getElementById("start")
-    let dataDisplay = document.getElementById("data-display")
-    let container = document.getElementById('container')
-    let spinner = document.querySelector("#spinner")
-  
-  
+let startDate, endDate
+let start = document.getElementById("start")
+let dataDisplay = document.getElementById("data-display")
+let container = document.getElementById('container')
+let spinner = document.querySelector("#spinner")
 
-
-
-    start.max = getCurrentDate()
+start.max = getCurrentDate()
 
 
 
@@ -40,7 +36,7 @@ function getCurrentDate(){
     let year = currentMonthYear.getFullYear()
     return`${year}-${month}`
 }
-
+//formats dates to display DD-MM-YYYY on the DOM
 function displayDate (date){
     let dateArr = date.split("-")
     const day = dateArr[2]
@@ -49,55 +45,66 @@ function displayDate (date){
     return `${month}-${day}-${year}`
 
 }
+// creates an iframe element for embed videos
+function createVideoElement (data){
 
+    element = document.createElement("iframe")
+    element.classList.add("card-img-top", "embed-responsive-item")
+    element.setAttribute("src",data.url)
+    element.setAttribute("width", "560")
+    element.setAttribute("height", "315")
+    element.setAttribute("allowfullscreen","")
+
+    return element
+
+}
+// creates image element
+function createImageElement (element, data){
+
+    element.classList.add("card-img-top")
+    element.setAttribute("src",data.url)
+    element.setAttribute("alt",data.title)
+    return element
+
+}
+
+// creates html elements and appends them to display photos and text
 function render(photoData){
-    
     document.querySelectorAll(".col").forEach(col => col.remove())
-
     photoData.forEach(photoData => {
-
         //create html elements
-        let row = document.getElementById("display")
-        let divCol = document.createElement("div")
-        let divCardBody = document.createElement("div")
-        let divCard = document.createElement("div")
-        let divEmbed = document.createElement("div")
+        const row = document.getElementById("display")
+        const divCol = document.createElement("div")
+        const divCardBody = document.createElement("div")
+        const divCard = document.createElement("div")
+        const divEmbed = document.createElement("div")
         let img = document.createElement("img")
-        let h5 = document.createElement("h5")
-        let p = document.createElement("p")
-        let a = document.createElement("a")
-
-    
+        const h5 = document.createElement("h5")
+        const p = document.createElement("p")
+        const a = document.createElement("a")
         p.classList.add("card-text")
-
-        if(photoData.copyright != null){
-            p.innerText = `${photoData.title}. \n Copyright: ${photoData.copyright}.`
-        }
-        else{
-            p.innerText = `${photoData.title}`
-        }
-
-        if(photoData.media_type === "video") {
-            img = document.createElement("iframe")
-            img.classList.add("card-img-top", "embed-responsive-item")
-            img.setAttribute("src",photoData.url)
-            img.setAttribute("width", "560")
-            img.setAttribute("height", "315")
-            img.setAttribute("allowfullscreen","")
-        }
-        else {
-        img.classList.add("card-img-top")
-        img.setAttribute("src",photoData.url)
-        img.setAttribute("alt",photoData.title)
-        a.setAttribute("href", photoData.hdurl)
-        a.setAttribute("target", "_blank")
-        a.classList.add("stretched-link")
-        }
-
         
-        h5.classList.add("card-title")
-        h5.innerText = displayDate(photoData.date)
-       
+        if(photoData.copyright != null){
+                p.innerText = `${photoData.title}. \n Copyright: ${photoData.copyright}.`
+            }
+            else{
+                p.innerText = `${photoData.title}`
+            }
+
+            if(photoData.media_type === "video") {
+                img = createVideoElement(photoData)
+            }
+            else {
+                createImageElement(img, photoData)
+                a.setAttribute("href", photoData.hdurl)
+                a.setAttribute("target", "_blank")
+                a.classList.add("stretched-link")
+            }
+
+            
+            h5.classList.add("card-title")
+            h5.innerText = displayDate(photoData.date)
+        
 
         divCol.classList.add("col")
         divCard.classList.add("card", "rounded")
@@ -118,7 +125,6 @@ function render(photoData){
 }
 // filters the results to remove any result that is outside the month that was selected by the user
 function filterResults (res){
-
     let filteredRes = res.filter(res => {
         let date = res.date.split("-")
         let startDateArr = startDate.split("-")
@@ -132,20 +138,18 @@ function filterResults (res){
     })
 
     return filteredRes
-
 }
-
+// displays the loading spinnger
 function displaySpinner(){
     document.getElementById("display").classList.add("visually-hidden")
     spinner.classList.remove("visually-hidden")
 }
-
+// hides loading spinner
 function hideSpinner() {
     spinner.classList.add("visually-hidden")
     document.getElementById("display").classList.remove("visually-hidden")
 }
-
-
+// function triggered by event listener and executes fetch to API
 function getData(e){
     displaySpinner()
     startDate = e.target.value
@@ -153,14 +157,12 @@ function getData(e){
     const url = `https://api.nasa.gov/planetary/apod?api_key=${apiKey}&start_date=${startDate}-01&end_date=${endDate}`
     fetch(url)
      .then(res => {
-         
         return res.json()
         })
         .then (res => {
             let finalRes = filterResults(res)
             render(finalRes)
             hideSpinner()
-            
         })
         .catch (err => {
             console.log(err)
