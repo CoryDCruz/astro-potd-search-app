@@ -65,6 +65,7 @@ function render(res){
         let img = document.createElement("img")
         let h5 = document.createElement("h5")
         let p = document.createElement("p")
+        let a = document.createElement("a")
         
         
         p.classList.add("card-text")
@@ -75,7 +76,7 @@ function render(res){
             p.innerText = `${res.title}`
         }
 
-        if(res.url.includes("youtube") === true || res.url.includes("vimeo") === true) {
+        if(res.media_type === "video") {
             img = document.createElement("iframe")
             img.classList.add("card-img-top", "embed-responsive-item")
             img.setAttribute("src",res.url)
@@ -87,6 +88,9 @@ function render(res){
         img.classList.add("card-img-top")
         img.setAttribute("src",res.url)
         img.setAttribute("alt",res.title)
+        a.setAttribute("href", res.hdurl)
+        a.setAttribute("target", "_blank")
+        a.classList.add("stretched-link")
         }
 
         
@@ -95,12 +99,13 @@ function render(res){
        
 
         divCol.classList.add("col")
-        divCard.classList.add("card", "shadow","shadow-lg", "shadow-intesity-sm", "rounded")
+        divCard.classList.add("card", "rounded")
         divEmbed.classList.add("embed-responsive", "embed-responsive-16by9")
         divCardBody.classList.add("card-body")
 
         divCardBody.appendChild(h5)
         divCardBody.appendChild(p)
+        divCardBody.appendChild(a)
         divCard.appendChild(img)
         divCard.appendChild(divCardBody)
         divCol.appendChild(divCard)
@@ -152,6 +157,7 @@ function getData(e){
         })
         .then (res => {
             let finalRes = filterResults(res)
+            console.log(finalRes)
            
             render(finalRes)
             hideSpinner()
