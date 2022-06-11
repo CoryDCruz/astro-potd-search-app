@@ -1,19 +1,20 @@
-
-
-let startDate, endDate
-let apiKey = "Q5S3dbJQaQBWgPObnvktAYvLVi4U0saG1yelfuNG"
+const apiKey = "Q5S3dbJQaQBWgPObnvktAYvLVi4U0saG1yelfuNG"
 
 
 
-//DOM selectors
-let start = document.getElementById("start")
-let dataDisplay = document.getElementById("data-display")
-let container = document.getElementById('container')
-let spinner = document.querySelector("#spinner")
+    let startDate, endDate
+    let start = document.getElementById("start")
+    let dataDisplay = document.getElementById("data-display")
+    let container = document.getElementById('container')
+    let spinner = document.querySelector("#spinner")
+  
+  
 
-//setting default value and max value of date range picker to today's date
-start.value = ""
-start.max = getCurrentDate()
+
+
+    start.max = getCurrentDate()
+
+
 
 // function to find the end date of the search query
 function getEndDate (start) {
@@ -22,13 +23,12 @@ function getEndDate (start) {
     startMonth++
     let endMonth = String(startMonth).padStart(2,"0")
     let endYear = String(startDateArr[0])
+
     if(endMonth === "13"){
         endMonth = "01"
         endYear = parseInt(endYear)
         endYear++
         endYear = String(endYear)
-        
-        
     }
     return `${endYear}-${endMonth}-01`
 }
@@ -50,11 +50,11 @@ function displayDate (date){
 
 }
 
-function render(res){
+function render(photoData){
     
     document.querySelectorAll(".col").forEach(col => col.remove())
 
-    res.forEach(res => {
+    photoData.forEach(photoData => {
 
         //create html elements
         let row = document.getElementById("display")
@@ -66,36 +66,37 @@ function render(res){
         let h5 = document.createElement("h5")
         let p = document.createElement("p")
         let a = document.createElement("a")
-        
-        
+
+    
         p.classList.add("card-text")
-        if(res.copyright != null){
-            p.innerText = `${res.title}. \n Copyright: ${res.copyright}.`
+
+        if(photoData.copyright != null){
+            p.innerText = `${photoData.title}. \n Copyright: ${photoData.copyright}.`
         }
         else{
-            p.innerText = `${res.title}`
+            p.innerText = `${photoData.title}`
         }
 
-        if(res.media_type === "video") {
+        if(photoData.media_type === "video") {
             img = document.createElement("iframe")
             img.classList.add("card-img-top", "embed-responsive-item")
-            img.setAttribute("src",res.url)
+            img.setAttribute("src",photoData.url)
             img.setAttribute("width", "560")
             img.setAttribute("height", "315")
             img.setAttribute("allowfullscreen","")
         }
         else {
         img.classList.add("card-img-top")
-        img.setAttribute("src",res.url)
-        img.setAttribute("alt",res.title)
-        a.setAttribute("href", res.hdurl)
+        img.setAttribute("src",photoData.url)
+        img.setAttribute("alt",photoData.title)
+        a.setAttribute("href", photoData.hdurl)
         a.setAttribute("target", "_blank")
         a.classList.add("stretched-link")
         }
 
         
         h5.classList.add("card-title")
-        h5.innerText = displayDate(res.date)
+        h5.innerText = displayDate(photoData.date)
        
 
         divCol.classList.add("col")
@@ -157,8 +158,6 @@ function getData(e){
         })
         .then (res => {
             let finalRes = filterResults(res)
-            console.log(finalRes)
-           
             render(finalRes)
             hideSpinner()
             
@@ -171,5 +170,6 @@ function getData(e){
 
 
 //event listeners
+
 start.addEventListener("input", getData)
 
