@@ -22,8 +22,6 @@
 # Getting Started
 - [Click here](https://main--apotd-archive.netlify.app/) to visit the Astronomy Picture of the Day Collection.
 # Future Enhancements
- - add a header with links to social and email address.
- - add back to top link in footer. 
  - hide API key
  - add a more styled way to look through the photos 
  - Allow users to see a full size version of the photo. 
