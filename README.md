@@ -23,6 +23,6 @@
 
 # Future Enhancements
  
- - Loading spinner when a selection is made. Display loading spinner until images are displayed. 
  - Create a side drawer where users can select specific categories and be displayed the most recent Astro 
+ - Allow users to see a full size version of the photo. 
  

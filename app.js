@@ -22,6 +22,14 @@ function getEndDate (start) {
     startMonth++
     let endMonth = String(startMonth).padStart(2,"0")
     let endYear = String(startDateArr[0])
+    if(endMonth === "13"){
+        endMonth = "01"
+        endYear = parseInt(endYear)
+        endYear++
+        endYear = String(endYear)
+        
+        
+    }
     return `${endYear}-${endMonth}-01`
 }
 
