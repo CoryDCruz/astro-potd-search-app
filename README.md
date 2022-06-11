@@ -22,7 +22,9 @@
 # Getting Started
 
 # Future Enhancements
- 
- - Create a side drawer where users can select specific categories and be displayed the most recent Astro 
+ - add a header with links to social and email address.
+ - add back to top link in footer. 
+ - hide API key
+ - add a more styled way to look through the photos 
  - Allow users to see a full size version of the photo. 
  
