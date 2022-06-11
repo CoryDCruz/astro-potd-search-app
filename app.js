@@ -57,7 +57,7 @@ function render(res){
     res.forEach(res => {
 
         //create html elements
-        let row = document.querySelector(".row")
+        let row = document.getElementById("display")
         let divCol = document.createElement("div")
         let divCardBody = document.createElement("div")
         let divCard = document.createElement("div")
@@ -65,7 +65,7 @@ function render(res){
         let img = document.createElement("img")
         let h5 = document.createElement("h5")
         let p = document.createElement("p")
-        // let iFrame = document.createElement("iframe")
+        
         
         p.classList.add("card-text")
         if(res.copyright != null){
