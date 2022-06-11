@@ -9,6 +9,7 @@ let apiKey = "Q5S3dbJQaQBWgPObnvktAYvLVi4U0saG1yelfuNG"
 let start = document.getElementById("start")
 let dataDisplay = document.getElementById("data-display")
 let container = document.getElementById('container')
+let spinner = document.querySelector("#spinner")
 
 //setting default value and max value of date range picker to today's date
 start.value = ""
@@ -21,6 +22,14 @@ function getEndDate (start) {
     startMonth++
     let endMonth = String(startMonth).padStart(2,"0")
     let endYear = String(startDateArr[0])
+    if(endMonth === "13"){
+        endMonth = "01"
+        endYear = parseInt(endYear)
+        endYear++
+        endYear = String(endYear)
+        
+        
+    }
     return `${endYear}-${endMonth}-01`
 }
 
@@ -42,6 +51,7 @@ function displayDate (date){
 }
 
 function render(res){
+    
     document.querySelectorAll(".col").forEach(col => col.remove())
 
     res.forEach(res => {
@@ -96,8 +106,8 @@ function render(res){
         divCol.appendChild(divCard)
         row.appendChild(divCol)
 
-        
-
+       
+     
     })
 }
 // filters the results to remove any result that is outside the month that was selected by the user
@@ -119,17 +129,33 @@ function filterResults (res){
 
 }
 
+function displaySpinner(){
+    document.getElementById("display").classList.add("visually-hidden")
+    spinner.classList.remove("visually-hidden")
+}
+
+function hideSpinner() {
+    spinner.classList.add("visually-hidden")
+    document.getElementById("display").classList.remove("visually-hidden")
+}
+
+
 function getData(e){
+    displaySpinner()
     startDate = e.target.value
     startDate === start.max ? endDate = "" : endDate = getEndDate(e.target.value)
     const url = `https://api.nasa.gov/planetary/apod?api_key=${apiKey}&start_date=${startDate}-01&end_date=${endDate}`
     fetch(url)
      .then(res => {
+         
         return res.json()
         })
         .then (res => {
             let finalRes = filterResults(res)
+           
             render(finalRes)
+            hideSpinner()
+            
         })
         .catch (err => {
             console.log(err)
