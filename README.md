@@ -12,7 +12,7 @@
 - HTML
 - CSS
 - Javascript
-- NASA API
+- NASA Astronomy Picture of the Day API
 - Boostrap
 
 # Screenshots
