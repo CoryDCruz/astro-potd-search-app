@@ -20,7 +20,7 @@
 ![wireframe screenshot](assets/screenshots/wireframe.png)
 
 # Getting Started
-- [Click here](https://main--apotd-archive.netlify.app/) to visit the Astronomy Picture of the Day Collection.
+- [Click here](https://main--apotd-archive.netlify.app/) to visit the Astronomy Picture of the Day Archive.
 # Future Enhancements
  - hide API key
  
