@@ -23,6 +23,6 @@
 - [Click here](https://main--apotd-archive.netlify.app/) to visit the Astronomy Picture of the Day Collection.
 # Future Enhancements
  - hide API key
- - add a more styled way to look through the photos 
+ 
  
  
