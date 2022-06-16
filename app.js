@@ -119,6 +119,9 @@ function render(photoData){
         divCol.appendChild(divCard)
         row.appendChild(divCol)
 
+
+        hideSpinner()
+
        
      
     })
@@ -162,7 +165,7 @@ function getData(e){
         .then (res => {
             let finalRes = filterResults(res)
             render(finalRes)
-            hideSpinner()
+            
         })
         .catch (err => {
             console.log(err)
