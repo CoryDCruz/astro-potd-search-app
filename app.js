@@ -102,14 +102,14 @@ function render(photoData){
             }
 
             
-            h5.classList.add("card-title")
+            h5.classList.add("card-title", "text-center")
             h5.innerText = displayDate(photoData.date)
         
 
         divCol.classList.add("col")
         divCard.classList.add("card", "rounded")
         divEmbed.classList.add("embed-responsive", "embed-responsive-16by9")
-        divCardBody.classList.add("card-body")
+        divCardBody.classList.add("card-body", "text-center")
 
         divCardBody.appendChild(h5)
         divCardBody.appendChild(p)
