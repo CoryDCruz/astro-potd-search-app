@@ -1,6 +1,6 @@
 # Astro Pic of The Day Search Application
 
- - Application to search the archive of the Astro Pics of the Day between a specified date range. 
+ - Website where users can select a day and year to see an album of all of the "Astronomy Pictures of the Day" posted for that month/year.
 
 # User Stories
 
