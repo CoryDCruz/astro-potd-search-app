@@ -13,7 +13,7 @@
 - CSS
 - Javascript ES6
 - Boostrap
-- - NASA Astronomy Picture of the Day API
+- NASA Astronomy Picture of the Day API
 
 # Screenshots
 
