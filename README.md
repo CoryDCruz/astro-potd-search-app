@@ -1,4 +1,4 @@
-# Astro Pic of The Day Search Application
+# Astronomy Photo of the Day Archive
 
  Web application where users can select a day and year to see an album of all of the "Astronomy Pictures of the Day" posted for that month/year.
 
